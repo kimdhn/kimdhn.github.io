@@ -3,13 +3,16 @@ layout: default
 ---
 
 <div class="row g-5 mb-5">
-  <div class="col-md-6">
+  <!-- 이미지 주석을 해제하는 경우 col-md-12 가 아닌 col-md-6 으로 변경 -->
+  <div class="col-md-12">
     <h3 class="fw-bold">About</h3>
     {{ content }}
   </div>
+  <!--
   <div class="col-md-6">
     <img src="{{ site.github.url }}/assets/img/home.jpg" alt="Home" width="100%">
   </div>
+  -->
 </div>
 
 <!--{% include publications.html %}-->
