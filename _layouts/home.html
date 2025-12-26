@@ -4,7 +4,7 @@ layout: default
 
 <div class="row g-5 mb-5">
   <div class="col-md-6">
-    <h3 class="fw-bold">Research</h3>
+    <h3 class="fw-bold">About</h3>
     {{ content }}
   </div>
   <div class="col-md-6">
@@ -12,13 +12,18 @@ layout: default
   </div>
 </div>
 
-{% include publications.html %}
+<!--{% include publications.html %}-->
 
 <div class="row g-5 mb-5">
   <div class="col-md-12">
     <h3 class="fw-bold border-bottom pb-3 mb-5">Updates</h3>
-    {% for post in site.posts %}
-      <p><a href="{{ site.github.url }}/{{ post.url }}">{{ post.title }}</a> - {{ post.date | date: "%B %-d, %Y" }}</p>
+    {% assign posts_limit = site.updates_limit | default: 5 %}
+    {% for post in site.posts limit: posts_limit %}
+      {% if post.link and post.link != "" %}
+        <p><a href="{{ post.link }}" target="_blank">{{ post.title }}</a> - {{ post.date | date: "%B %-d, %Y" }}</p>
+      {% else %}
+        <p>{{ post.title }} - {{ post.date | date: "%B %-d, %Y" }}</p>
+      {% endif %}
     {% endfor %}
   </div>
 </div>
