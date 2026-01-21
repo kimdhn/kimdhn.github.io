@@ -15,3 +15,14 @@ body {
 body a {
   color: $linkColor;
 }
+
+.social-link {
+  color: $bodyColor;
+  padding: 0.75rem 1rem;
+  border-radius: 0.5rem;
+  transition: background-color 0.2s ease;
+  
+  &:hover {
+    background-color: #f8f9fa;
+  }
+}

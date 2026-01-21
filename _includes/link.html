@@ -1,0 +1,19 @@
+<!-- 소셜 링크 섹션 -->
+<div class="row g-5 mb-5">
+  <div>
+    <h3 class="fw-bold border-bottom pb-3 mb-5">Link</h3>
+    <div class="d-flex flex-column gap-3">
+      {% for item in site.data.settings.social %}
+      <a href="{{ item.link }}" class="social-link text-decoration-none" target="_blank" rel="noopener">
+        <div class="d-flex align-items-center">
+          <i class="fa-brands fa-{{ item.icon }} fa-lg me-3"></i>
+          <div>
+            <div class="fw-medium">{{ item.name }}</div>
+            <small class="text-muted">{{ item.username }}</small>
+          </div>
+        </div>
+      </a>
+      {% endfor %}
+    </div>
+  </div>
+</div>

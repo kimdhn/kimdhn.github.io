@@ -1,13 +1,13 @@
 menu:
-#- {name: 'publications', url: '/publications'}
-#- {name: 'cv', url: 'https://drive.google.com/file/d/1SkWtu1H9wKOFWpnm7WIzMehkJOJuX_-T/view'}
+- {name: 'home', url: '/'}
 - {name: 'contact', url: '/contact'}
+- {name: 'link', url: '/link'}
 
 social:
-- {icon: 'github', link: 'https://github.com/kimdhn'}
-- {icon: 'x-twitter', link: 'https://x.com/km_dhnn'}
-#- {icon: 'instagram', link: 'https://instagram.com/paululele'}
-- {icon: 'linkedin', link: 'https://www.linkedin.com/in/kimdohoon/'}
+- {icon: 'github', name: 'GitHub', username: '@kimdhn', link: 'https://github.com/kimdhn'}
+- {icon: 'x-twitter', name: 'X (Twitter)', username: '@km_dhnn', link: 'https://x.com/km_dhnn'}
+#- {icon: 'instagram', name: 'Instagram', username: '@paululele', link: 'https://instagram.com/paululele'}
+- {icon: 'linkedin', name: 'LinkedIn', username: 'Dohoon Kim', link: 'https://www.linkedin.com/in/kimdohoon/'}
 
 contacts:
 - {name: 'Dohoon Kim', title: 'M.S. & Ph.D. Course', department: 'Graduate School of Data Science', institution: 'Seoul National University', institution_address: '1 Gwanak-ro, Gwanak-gu, Seoul', phone: '(000) 000-0000', email: 'dohoon@snu.ac.kr', office: 'Science Building 505', image: 'assets/img/contact.jpg'}
