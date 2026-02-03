@@ -3,3 +3,13 @@ baseurl: "" # the subpath of your site, e.g. /blog
 title: "Kim Dohoon" # the name of your site, e.g. ACME Corp.
 description: "Data Scientist"
 updates_limit: 5
+
+# Collections
+collections:
+  publications:
+    output: true
+    permalink: /publications/:slug
+
+# Publications
+publications:
+  enabled: false

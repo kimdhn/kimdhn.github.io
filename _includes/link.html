@@ -6,7 +6,11 @@
       {% for item in site.data.settings.social %}
       <a href="{{ item.link }}" class="social-link text-decoration-none" target="_blank" rel="noopener">
         <div class="d-flex align-items-center">
-          <i class="fa-brands fa-{{ item.icon }} fa-lg me-3"></i>
+          {% if item.svg %}
+            <img src="/assets/img/{{ item.svg }}" alt="{{ item.name }}" class="me-3" style="width: 1em; height: 1em; object-fit: contain;">
+          {% else %}
+            <i class="fa-brands fa-{{ item.icon }} fa-lg me-3"></i>
+          {% endif %}
           <div>
             <div class="fw-medium">{{ item.name }}</div>
             <small class="text-muted">{{ item.username }}</small>

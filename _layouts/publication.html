@@ -1,0 +1,43 @@
+---
+layout: default
+---
+
+<div class="row g-5 mb-5">
+  <div>
+    <h1 class="fw-bold mb-3">{{ page.title }}</h1>
+    
+    <div class="mb-4">
+      <p class="text-muted mb-1">
+        <strong>Venue:</strong> {{ page.venue }}
+      </p>
+      <p class="text-muted mb-1">
+        <strong>Year:</strong> {{ page.year }}
+      </p>
+      {% if page.category %}
+      <p class="text-muted mb-1">
+        <strong>Category:</strong> {{ page.category }}
+      </p>
+      {% endif %}
+      {% if page.authors %}
+      <p class="text-muted mb-1">
+        <strong>Authors:</strong> {{ page.authors }}
+      </p>
+      {% endif %}
+      {% if page.link %}
+      <p class="mb-1">
+        <strong><a href="{{ page.link }}" target="_blank" rel="noopener">View Publication →</a></strong>
+      </p>
+      {% endif %}
+    </div>
+
+    <div class="publication-content">
+      {{ content }}
+    </div>
+
+    <hr class="my-5">
+    
+    <p>
+      <a href="/publications">← Back to Publications</a>
+    </p>
+  </div>
+</div>

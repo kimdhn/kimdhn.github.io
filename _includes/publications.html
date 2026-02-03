@@ -1,14 +1,100 @@
 <div class="row g-5 mb-5">
   <div>
     <h3 class="fw-bold border-bottom pb-3 mb-5">Publications</h3>
-    {% if page.title == "Home" %}
-      {% for item in site.data.publications.featured %}
-        <p><a href="{{ item.url }}">{{ item.name }}</a></p>
-      {% endfor %}
-    {% else %}
-      {% for item in site.data.publications.index %}
-        <p><a href="{{ item.url }}">{{ item.name }}</a></p>
-      {% endfor %}
+    
+    {% if page.title == "Publications" %}
+      <!-- Publications 페이지: 카테고리 필터 -->
+      <style>
+        .filter-tabs {
+          display: inline-flex;
+          gap: 20px;
+          border-bottom: 1px solid #e5e7eb;
+          padding-bottom: 8px;
+        }
+        
+        .btn-tab {
+          background: none;
+          border: none;
+          color: #9ca3af;
+          font-size: 14px;
+          font-weight: 500;
+          padding: 8px 4px;
+          position: relative;
+          cursor: pointer;
+          transition: all 0.3s ease;
+        }
+
+        .btn-tab:hover {
+          color: #374151;
+        }
+
+        .btn-tab.active {
+          color: #111827;
+          font-weight: 700;
+        }
+        
+        .btn-tab.active::after {
+          content: '';
+          position: absolute;
+          bottom: -9px;
+          left: 0;
+          width: 100%;
+          height: 2px;
+          background-color: #000000;
+        }
+      </style>
+      
+      <div class="filter-tabs mb-4">
+        <button class="btn-tab active" data-filter="all">All</button>
+        <button class="btn-tab" data-filter="international">International</button>
+        <button class="btn-tab" data-filter="domestic">Domestic</button>
+      </div>
+      
+      <div id="publications-list">
+        {% if site.publications.size > 0 %}
+          {% assign featured_pubs = site.publications | where: 'featured', true %}
+          {% assign sorted_publications = featured_pubs | sort: 'date' | reverse %}
+          {% if sorted_publications.size > 0 %}
+            {% for pub in sorted_publications %}
+              <div class="publication-item" data-category="{{ pub.category }}">
+                <p class="mb-1">
+                  {% if pub.link %}
+                    <a href="{{ pub.link }}" target="_blank" rel="noopener">{{ pub.title }}</a>
+                  {% else %}
+                    {{ pub.title }}
+                  {% endif %}
+                </p>
+                <small class="text-muted">{{ pub.venue }}</small>
+              </div>
+            {% endfor %}
+          {% else %}
+            <p class="text-muted">Publications coming soon.</p>
+          {% endif %}
+        {% else %}
+          <p class="text-muted">Publications coming soon.</p>
+        {% endif %}
+      </div>
+      
+      <script>
+        document.querySelectorAll('[data-filter]').forEach(btn => {
+          btn.addEventListener('click', function() {
+            const filter = this.getAttribute('data-filter');
+            
+            // 버튼 활성화 상태 변경
+            document.querySelectorAll('[data-filter]').forEach(b => b.classList.remove('active'));
+            this.classList.add('active');
+            
+            // 아이템 필터링
+            document.querySelectorAll('.publication-item').forEach(item => {
+              if (filter === 'all' || item.getAttribute('data-category') === filter) {
+                item.style.display = '';
+              } else {
+                item.style.display = 'none';
+              }
+            });
+          });
+        });
+      </script>
     {% endif %}
   </div>
 </div>
