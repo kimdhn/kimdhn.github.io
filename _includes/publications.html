@@ -56,15 +56,35 @@
           {% assign sorted_publications = featured_pubs | sort: 'date' | reverse %}
           {% if sorted_publications.size > 0 %}
             {% for pub in sorted_publications %}
-              <div class="publication-item" data-category="{{ pub.category }}">
-                <p class="mb-1">
-                  {% if pub.link %}
-                    <a href="{{ pub.link }}" target="_blank" rel="noopener">{{ pub.title }}</a>
-                  {% else %}
-                    {{ pub.title }}
+              <div class="publication-item mb-4" data-category="{{ pub.category }}" style="display: flex; flex-direction: row; gap: 16px; flex-wrap: nowrap; align-items: stretch; width: 100%;">
+                <!-- 쇸네일 -->
+                <div style="flex-shrink: 0; width: 120px; height: auto; background-color: {% if pub.thumbnail and pub.thumbnail != empty %}transparent{% else %}#f5f5f5{% endif %}; border-radius: 4px; overflow: hidden;">
+                  {% if pub.thumbnail and pub.thumbnail != empty %}
+                    <img src="/assets/img/{{ pub.thumbnail }}" alt="{{ pub.title }}" style="width: 100%; height: 100%; object-fit: cover;">
                   {% endif %}
-                </p>
-                <small class="text-muted">{{ pub.venue }}</small>
+                </div>
+                
+                <!-- 내용 -->
+                <div style="flex: 1; min-width: 0;">
+                  <div class="mb-2">
+                    <span class="badge" style="background-color: {% if pub.category == 'international' %}#3b82f6{% else %}#8b5cf6{% endif %}; padding: 4px 12px; border-radius: 4px; font-size: 12px; color: white;">{{ pub.category | capitalize }}</span>
+                  </div>
+                  <p class="mb-1" style="font-size: 16px; font-weight: 500;">
+                    {{ pub.title }}
+                  </p>
+                  {% if pub.authors and pub.authors != empty %}<p class="text-muted mb-1" style="font-size: 14px;">{{ pub.authors }}</p>{% endif %}
+                  <div style="display: flex; gap: 0; align-items: center;">
+                    {% if pub.venue and pub.venue != empty %}<small class="text-muted">{{ pub.venue }}</small>{% endif %}
+                    {% if pub.year %}<small class="text-muted">, {{ pub.year }}</small>{% endif %}
+                  </div>
+                  <div style="margin-top: 8px; font-size: 13px;">
+                    {% if pub.pdf and pub.pdf != empty %}<a href="{{ pub.pdf }}" target="_blank" rel="noopener" style="color: #3b82f6; text-decoration: none; margin-right: 12px;">[PDF]</a>{% endif %}
+                    {% if pub.poster and pub.poster != empty %}<a href="{{ pub.poster }}" target="_blank" rel="noopener" style="color: #3b82f6; text-decoration: none; margin-right: 12px;">[Poster]</a>{% endif %}
+                    {% if pub.github and pub.github != empty %}<a href="{{ pub.github }}" target="_blank" rel="noopener" style="color: #3b82f6; text-decoration: none; margin-right: 12px;">[Github]</a>{% endif %}
+                    {% if pub.page and pub.page != empty %}<a href="{{ pub.page }}" target="_blank" rel="noopener" style="color: #3b82f6; text-decoration: none;">[Page]</a>{% endif %}
+                  </div>
+                  {% if pub.description and pub.description != empty %}<p class="text-muted mb-0" style="font-size: 13px; margin-top: 8px;">{{ pub.description }}</p>{% endif %}
+                </div>
               </div>
             {% endfor %}
           {% else %}
@@ -87,7 +107,7 @@
             // 아이템 필터링
             document.querySelectorAll('.publication-item').forEach(item => {
               if (filter === 'all' || item.getAttribute('data-category') === filter) {
-                item.style.display = '';
+                item.style.display = 'flex';
               } else {
                 item.style.display = 'none';
               }

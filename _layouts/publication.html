@@ -4,35 +4,53 @@ layout: default
 
 <div class="row g-5 mb-5">
   <div>
+    <!-- 쇸네일 -->
+    {% if page.thumbnail and page.thumbnail != empty %}
+    <div style="width: 240px; height: 240px; margin-bottom: 24px; border-radius: 4px; overflow: hidden;">
+      <img src="/assets/img/{{ page.thumbnail }}" alt="{{ page.title }}" style="width: 100%; height: 100%; object-fit: cover;">
+    </div>
+    {% else %}
+    <div style="width: 240px; height: 240px; margin-bottom: 24px; background-color: #f5f5f5; border-radius: 4px;"></div>
+    {% endif %}
+    
+    <div class="mb-3">
+      <span class="badge" style="background-color: {% if page.category == 'international' %}#3b82f6{% else %}#8b5cf6{% endif %}; padding: 6px 14px; border-radius: 4px; font-size: 13px; color: white;">{{ page.category | capitalize }}</span>
+    </div>
+    
     <h1 class="fw-bold mb-3">{{ page.title }}</h1>
     
+    {% if page.authors and page.authors != empty %}
+    <p class="text-muted mb-3" style="font-size: 15px;">{{ page.authors }}</p>
+    {% endif %}
+    
     <div class="mb-4">
+      {% if page.venue and page.venue != empty %}
       <p class="text-muted mb-1">
         <strong>Venue:</strong> {{ page.venue }}
       </p>
-      <p class="text-muted mb-1">
+      {% endif %}
+      <p class="text-muted mb-3">
         <strong>Year:</strong> {{ page.year }}
       </p>
-      {% if page.category %}
-      <p class="text-muted mb-1">
-        <strong>Category:</strong> {{ page.category }}
-      </p>
-      {% endif %}
-      {% if page.authors %}
-      <p class="text-muted mb-1">
-        <strong>Authors:</strong> {{ page.authors }}
-      </p>
-      {% endif %}
-      {% if page.link %}
-      <p class="mb-1">
-        <strong><a href="{{ page.link }}" target="_blank" rel="noopener">View Publication →</a></strong>
-      </p>
-      {% endif %}
+      <div style="font-size: 15px;">
+        {% if page.pdf and page.pdf != empty %}<a href="{{ page.pdf }}" target="_blank" rel="noopener" style="color: #3b82f6; text-decoration: none; margin-right: 16px;">[PDF]</a>{% endif %}
+        {% if page.poster and page.poster != empty %}<a href="{{ page.poster }}" target="_blank" rel="noopener" style="color: #3b82f6; text-decoration: none; margin-right: 16px;">[Poster]</a>{% endif %}
+        {% if page.github and page.github != empty %}<a href="{{ page.github }}" target="_blank" rel="noopener" style="color: #3b82f6; text-decoration: none; margin-right: 16px;">[Github]</a>{% endif %}
+        {% if page.page and page.page != empty %}<a href="{{ page.page }}" target="_blank" rel="noopener" style="color: #3b82f6; text-decoration: none;">[Page]</a>{% endif %}
+      </div>
     </div>
 
-    <div class="publication-content">
+    {% if page.description and page.description != empty %}
+    <div class="mb-4" style="padding: 12px; background-color: #f9f9f9; border-left: 3px solid #3b82f6; border-radius: 4px;">
+      {{ page.description }}
+    </div>
+    {% endif %}
+
+    {% if content != empty %}
+    <div class="publication-content mb-4">
       {{ content }}
     </div>
+    {% endif %}
 
     <hr class="my-5">
     
