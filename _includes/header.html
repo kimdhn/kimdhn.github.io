@@ -17,5 +17,8 @@
         <a class="me-3 py-2 text-decoration-none" href="{{ site.github.url }}{{ item.url }}">{{ item.name }}</a>
       {% endif %}
     {% endfor %}
+    {% if site.resume and site.resume.url %}
+      <a class="me-3 py-2 text-decoration-none" href="{{ site.resume.url }}" target="_blank" rel="noopener noreferrer" aria-label="CV (새 탭에서 열기)">CV</a>
+    {% endif %}
   </nav>
 </header>

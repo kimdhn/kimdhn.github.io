@@ -13,3 +13,7 @@ collections:
 # Publications
 publications:
   enabled: false
+
+# Resume / CV link (only URL)
+resume:
+  url: https://drive.google.com/file/d/1SkWtu1H9wKOFWpnm7WIzMehkJOJuX_-T/view
