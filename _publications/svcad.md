@@ -1,10 +1,10 @@
 ---
 title: 	"Suspect, Verify, and Conclude: Training-Free Guidance for MLLMs for Industrial Anomaly Detection and Reasoning"
-venue: KCC (한국정보과학회)
+venue: "KCC (한국컴퓨터종합학술대회)"
 year: 2026
 category: "domestic"
 featured: true
-thumbnail: ""
+thumbnail: "svcad.svg"
 pdf: 
 poster:
 github: ""

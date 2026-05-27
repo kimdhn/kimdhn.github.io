@@ -42,6 +42,24 @@
           height: 2px;
           background-color: #000000;
         }
+
+        .publication-thumbnail {
+          flex-shrink: 0;
+          width: 160px;
+          height: 160px;
+          border-radius: 4px;
+          overflow: hidden;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+
+        @media (max-width: 575.98px) {
+          .publication-thumbnail {
+            width: 132px;
+            height: 132px;
+          }
+        }
       </style>
       
       <div class="filter-tabs mb-4">
@@ -57,10 +75,10 @@
           {% if sorted_publications.size > 0 %}
             {% for pub in sorted_publications %}
               <div class="publication-item mb-4" data-category="{{ pub.category }}" style="display: flex; flex-direction: row; gap: 16px; flex-wrap: nowrap; align-items: stretch; width: 100%;">
-                <!-- 쇸네일 -->
-                <div style="flex-shrink: 0; width: 120px; height: auto; background-color: {% if pub.thumbnail and pub.thumbnail != empty %}transparent{% else %}#f5f5f5{% endif %}; border-radius: 4px; overflow: hidden;">
+                <!-- 썸네일 -->
+                <div class="publication-thumbnail" style="background-color: {% if pub.thumbnail and pub.thumbnail != empty %}transparent{% else %}#f5f5f5{% endif %};">
                   {% if pub.thumbnail and pub.thumbnail != empty %}
-                    <img src="/assets/img/{{ pub.thumbnail }}" alt="{{ pub.title }}" style="width: 100%; height: 100%; object-fit: cover;">
+                    <img src="/assets/img/{{ pub.thumbnail }}" alt="{{ pub.title }}" style="width: 100%; height: 100%; object-fit: contain; background-color: transparent;">
                   {% endif %}
                 </div>
                 
