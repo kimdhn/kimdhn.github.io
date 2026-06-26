@@ -16,6 +16,95 @@ body a {
   color: $linkColor;
 }
 
+.nav-external-link {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.28rem;
+
+  i {
+    font-size: 0.64em;
+    opacity: 0.62;
+    transform: translateY(-0.08em);
+    transition: opacity 0.18s ease, transform 0.18s ease;
+  }
+
+  &:hover i,
+  &:focus i {
+    opacity: 0.9;
+    transform: translate(0.05rem, -0.14em);
+  }
+}
+
+.publication-links {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.45rem;
+  margin-top: 0.65rem;
+}
+
+.publication-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  min-height: 1.9rem;
+  padding: 0.34rem 0.66rem;
+  border: 1px solid #d9dee7;
+  border-radius: 999px;
+  background: #ffffff;
+  color: #212529;
+  font-size: 0.78rem;
+  font-weight: 600;
+  line-height: 1;
+  text-decoration: none;
+  transition: border-color 0.18s ease, box-shadow 0.18s ease, color 0.18s ease, transform 0.18s ease;
+
+  i {
+    font-size: 0.82rem;
+  }
+
+  &:hover,
+  &:focus {
+    border-color: #9bb8f4;
+    color: #1d4ed8;
+    box-shadow: 0 5px 16px rgba(29, 78, 216, 0.12);
+    text-decoration: none;
+    transform: translateY(-1px);
+  }
+}
+
+.publication-link-github:hover,
+.publication-link-github:focus {
+  border-color: #9ca3af;
+  color: #111827;
+  box-shadow: 0 5px 16px rgba(17, 24, 39, 0.12);
+}
+
+.publication-link-pdf:hover,
+.publication-link-pdf:focus {
+  border-color: #f0a0a0;
+  color: #b91c1c;
+  box-shadow: 0 5px 16px rgba(185, 28, 28, 0.11);
+}
+
+.publication-link-poster:hover,
+.publication-link-poster:focus {
+  border-color: #c4b5fd;
+  color: #6d28d9;
+  box-shadow: 0 5px 16px rgba(109, 40, 217, 0.11);
+}
+
+.publication-links-lg {
+  gap: 0.55rem;
+
+  .publication-link {
+    min-height: 2.25rem;
+    padding: 0.45rem 0.82rem;
+    font-size: 0.88rem;
+  }
+}
+
 .social-link {
   color: $bodyColor;
   padding: 0.75rem 1rem;

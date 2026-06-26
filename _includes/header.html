@@ -18,7 +18,10 @@
       {% endif %}
     {% endfor %}
     {% if site.resume and site.resume.url %}
-      <a class="me-3 py-2 text-decoration-none" href="{{ site.resume.url }}" target="_blank" rel="noopener noreferrer" aria-label="CV (새 탭에서 열기)">CV</a>
+      <a class="me-3 py-2 text-decoration-none nav-external-link" href="{{ site.resume.url }}" target="_blank" rel="noopener noreferrer" aria-label="CV (새 탭에서 열기)">
+        <span>CV</span>
+        <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i>
+      </a>
     {% endif %}
   </nav>
 </header>
