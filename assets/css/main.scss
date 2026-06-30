@@ -145,6 +145,15 @@ body a {
   padding-top: 0.2rem;
 }
 
+.profile-intro-no-image .section-body {
+  max-width: 56rem;
+}
+
+.publications-section {
+  border-top: 0;
+  padding-top: 0.2rem;
+}
+
 .section-heading {
   margin-bottom: 1.35rem;
 
@@ -208,6 +217,7 @@ body a {
   border-bottom: 1px solid $borderColor;
   display: inline-flex;
   gap: 1.1rem;
+  margin-bottom: 1.25rem;
   padding-bottom: 0.5rem;
 }
 
@@ -244,14 +254,18 @@ body a {
 }
 
 .publication-item {
-  align-items: stretch;
+  align-items: flex-start;
   border-bottom: 1px solid $borderColor;
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
   gap: 1rem;
-  padding-bottom: 1.45rem;
+  padding: 1.05rem 0 1.25rem;
   width: 100%;
+}
+
+.publication-item:first-child {
+  padding-top: 0;
 }
 
 .publication-thumbnail {
@@ -261,10 +275,10 @@ body a {
   border-radius: 7px;
   display: flex;
   flex-shrink: 0;
-  height: 148px;
+  height: 108px;
   justify-content: center;
   overflow: hidden;
-  width: 164px;
+  width: 148px;
 
   img {
     background: transparent;
@@ -285,8 +299,8 @@ body a {
 }
 
 .publication-badge {
+  border: 1px solid $borderColor;
   border-radius: 4px;
-  color: #ffffff;
   display: inline-flex;
   font-size: 0.72rem;
   font-weight: 720;
@@ -295,11 +309,15 @@ body a {
 }
 
 .publication-badge-international {
-  background: $accentColor;
+  background: #eef6fb;
+  border-color: #cfe2ec;
+  color: $accentColor;
 }
 
 .publication-badge-domestic {
-  background: $tealColor;
+  background: #eef8f6;
+  border-color: #cfe8e3;
+  color: #25776d;
 }
 
 .publication-title {

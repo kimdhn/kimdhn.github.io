@@ -2,9 +2,11 @@
 layout: default
 ---
 
-<section class="content-section about-section profile-intro mb-5" aria-labelledby="about-title">
+{% assign home_profile_image = site.data.settings.home_profile_image | default: "" %}
+
+<section class="content-section about-section profile-intro{% if home_profile_image == "" %} profile-intro-no-image{% endif %} mb-5" aria-labelledby="about-title">
   <div class="row g-4 g-lg-5 align-items-start">
-    <div class="col-lg-10">
+    <div class="{% if home_profile_image == "" %}col-lg-12{% else %}col-lg-8{% endif %}">
       <div class="section-heading">
         <h2 id="about-title">About</h2>
       </div>
@@ -13,18 +15,17 @@ layout: default
       </div>
       <div class="research-keywords" aria-label="Research keywords">
         <span>Machine Learning</span>
-        <span>Multimodal AI</span>
-        <span>Data Science</span>
+        <span>Constraints</span>
+        <span>Energy-Based Models</span>
       </div>
     </div>
-    {% comment %}
-    Add a profile image later by uncommenting this column and changing the text column above to col-lg-8.
-    <div class="col-lg-4">
-      <figure class="home-portrait mb-0">
-        <img src="{{ site.github.url }}/assets/img/home.jpg" alt="Kim Dohoon" width="5472" height="3648">
-      </figure>
-    </div>
-    {% endcomment %}
+    {% if home_profile_image != "" %}
+      <div class="col-lg-4">
+        <figure class="home-portrait mb-0">
+          <img src="{{ site.github.url }}/{{ home_profile_image }}" alt="Kim Dohoon">
+        </figure>
+      </div>
+    {% endif %}
   </div>
 </section>
 

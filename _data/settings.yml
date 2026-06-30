@@ -5,6 +5,9 @@ menu:
 
 publications_enabled: true
 
+# Set this to an image path, such as "assets/img/home.jpg", to show a profile image on the home page.
+home_profile_image: ""
+
 social:
 - {icon: 'github', name: 'GitHub', username: '@kimdhn', link: 'https://github.com/kimdhn'}
 - {icon: 'x-twitter', name: 'X (Twitter)', username: '@kim_dhnn', link: 'https://x.com/kim_dhnn'}
