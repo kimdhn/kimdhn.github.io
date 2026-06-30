@@ -1,67 +1,9 @@
-<div class="row g-5 mb-5">
-  <div>
-    <h3 class="fw-bold border-bottom pb-3 mb-5">Publications</h3>
+<section class="content-section publications-section mb-5" aria-labelledby="publications-title">
+  <div class="section-heading">
+    <h2 id="publications-title">Publications</h2>
+  </div>
     
     {% if page.title == "Publications" %}
-      <!-- Publications 페이지: 카테고리 필터 -->
-      <style>
-        .filter-tabs {
-          display: inline-flex;
-          gap: 20px;
-          border-bottom: 1px solid #e5e7eb;
-          padding-bottom: 8px;
-        }
-        
-        .btn-tab {
-          background: none;
-          border: none;
-          color: #9ca3af;
-          font-size: 14px;
-          font-weight: 500;
-          padding: 8px 4px;
-          position: relative;
-          cursor: pointer;
-          transition: all 0.3s ease;
-        }
-
-        .btn-tab:hover {
-          color: #374151;
-        }
-
-        .btn-tab.active {
-          color: #111827;
-          font-weight: 700;
-        }
-        
-        .btn-tab.active::after {
-          content: '';
-          position: absolute;
-          bottom: -9px;
-          left: 0;
-          width: 100%;
-          height: 2px;
-          background-color: #000000;
-        }
-
-        .publication-thumbnail {
-          flex-shrink: 0;
-          width: 160px;
-          height: 160px;
-          border-radius: 4px;
-          overflow: hidden;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-        }
-
-        @media (max-width: 575.98px) {
-          .publication-thumbnail {
-            width: 132px;
-            height: 132px;
-          }
-        }
-      </style>
-      
       <div class="filter-tabs mb-4">
         <button class="btn-tab active" data-filter="all">All</button>
         <button class="btn-tab" data-filter="international">International</button>
@@ -74,24 +16,22 @@
           {% assign sorted_publications = featured_pubs | sort: 'date' | reverse %}
           {% if sorted_publications.size > 0 %}
             {% for pub in sorted_publications %}
-              <div class="publication-item mb-4" data-category="{{ pub.category }}" style="display: flex; flex-direction: row; gap: 16px; flex-wrap: nowrap; align-items: stretch; width: 100%;">
-                <!-- 썸네일 -->
-                <div class="publication-thumbnail" style="background-color: {% if pub.thumbnail and pub.thumbnail != empty %}transparent{% else %}#f5f5f5{% endif %};">
+              <article class="publication-item mb-4" data-category="{{ pub.category }}">
+                <div class="publication-thumbnail{% unless pub.thumbnail and pub.thumbnail != empty %} publication-thumbnail-empty{% endunless %}">
                   {% if pub.thumbnail and pub.thumbnail != empty %}
-                    <img src="/assets/img/{{ pub.thumbnail }}" alt="{{ pub.title }}" style="width: 100%; height: 100%; object-fit: contain; background-color: transparent;">
+                    <img src="/assets/img/{{ pub.thumbnail }}" alt="{{ pub.title }}">
                   {% endif %}
                 </div>
                 
-                <!-- 내용 -->
-                <div style="flex: 1; min-width: 0;">
+                <div class="publication-content">
                   <div class="mb-2">
-                    <span class="badge" style="background-color: {% if pub.category == 'international' %}#3b82f6{% else %}#8b5cf6{% endif %}; padding: 4px 12px; border-radius: 4px; font-size: 12px; color: white;">{{ pub.category | capitalize }}</span>
+                    <span class="publication-badge publication-badge-{{ pub.category }}">{{ pub.category | capitalize }}</span>
                   </div>
-                  <p class="mb-1" style="font-size: 16px; font-weight: 500;">
+                  <p class="publication-title mb-1">
                     {{ pub.title }}
                   </p>
-                  {% if pub.authors and pub.authors != empty %}<p class="text-muted mb-1" style="font-size: 14px;">{{ pub.authors }}</p>{% endif %}
-                  <div style="display: flex; gap: 0; align-items: center;">
+                  {% if pub.authors and pub.authors != empty %}<p class="publication-authors text-muted mb-1">{{ pub.authors }}</p>{% endif %}
+                  <div class="publication-meta">
                     {% if pub.venue and pub.venue != empty %}<small class="text-muted">{{ pub.venue }}</small>{% endif %}
                     {% if pub.year %}<small class="text-muted">, {{ pub.year }}</small>{% endif %}
                   </div>
@@ -101,9 +41,9 @@
                     {% if pub.github and pub.github != empty %}<a class="publication-link publication-link-github" href="{{ pub.github }}" target="_blank" rel="noopener"><i class="fa-brands fa-github" aria-hidden="true"></i><span>Code</span></a>{% endif %}
                     {% if pub.page and pub.page != empty %}<a class="publication-link publication-link-page" href="{{ pub.page }}" target="_blank" rel="noopener"><i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i><span>Page</span></a>{% endif %}
                   </div>
-                  {% if pub.description and pub.description != empty %}<p class="text-muted mb-0" style="font-size: 13px; margin-top: 8px;">{{ pub.description }}</p>{% endif %}
+                  {% if pub.description and pub.description != empty %}<p class="publication-description text-muted mb-0">{{ pub.description }}</p>{% endif %}
                 </div>
-              </div>
+              </article>
             {% endfor %}
           {% else %}
             <p class="text-muted">Publications coming soon.</p>
@@ -134,5 +74,4 @@
         });
       </script>
     {% endif %}
-  </div>
-</div>
+</section>

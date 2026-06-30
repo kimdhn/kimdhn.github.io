@@ -1,22 +1,17 @@
-<div class="row g-5 mb-5">
-  <div>
-    <h3 class="fw-bold border-bottom pb-3 mb-5">Contact</h3>
-    {% for contact in site.data.settings.contacts %}
-    <div class="row g-5 mb-5">
-      <div class="col-md-6">
-        <h4>{{ contact.name }}</h4>
-        <p>{{ contact.title }}</p>
-        <p>{{ contact.institution }} | {{ contact.department }}</p>
+<section class="content-section contact-section mb-5" aria-labelledby="contact-title">
+  <div class="section-heading">
+    <h2 id="contact-title">Contact</h2>
+  </div>
+  {% for contact in site.data.settings.contacts %}
+    <div class="contact-panel">
+      <div class="contact-copy">
+        <h3>{{ contact.name }}</h3>
+        <p class="contact-title">{{ contact.title }}</p>
+        <p>{{ contact.institution }} · {{ contact.department }}</p>
         <!--<p>Phone: {{ contact.phone }}</p>-->
-        <p>Email: {{ contact.email }}</p>
+        <p><a href="mailto:{{ contact.email }}">{{ contact.email }}</a></p>
         <!--<p>Office: {{ contact.office }}</p>-->
       </div>
-      <!--
-      <div class="col-md-6">
-        <img src="{{ site.github.url }}/{{ contact.image }}" alt="Contact" width="100%">
-      </div>
-      -->
     </div>
-    {% endfor %}
-  </div>
-</div>
+  {% endfor %}
+</section>

@@ -2,31 +2,48 @@
 layout: default
 ---
 
-<div class="row g-5 mb-5">
-  <!-- 이미지 주석을 해제하는 경우 col-md-12 가 아닌 col-md-6 으로 변경 -->
-  <div class="col-md-12">
-    <h3 class="fw-bold">About</h3>
-    {{ content }}
+<section class="content-section about-section profile-intro mb-5" aria-labelledby="about-title">
+  <div class="row g-4 g-lg-5 align-items-start">
+    <div class="col-lg-8">
+      <div class="section-heading">
+        <h2 id="about-title">About</h2>
+      </div>
+      <div class="section-body">
+        {{ content }}
+      </div>
+      <div class="research-keywords" aria-label="Research keywords">
+        <span>Machine Learning</span>
+        <span>Multimodal AI</span>
+        <span>Data Science</span>
+      </div>
+    </div>
+    <div class="col-lg-4">
+      <figure class="home-portrait mb-0">
+        <img src="{{ site.github.url }}/assets/img/home.jpg" alt="Kim Dohoon" width="5472" height="3648">
+      </figure>
+    </div>
   </div>
-  <!--
-  <div class="col-md-6">
-    <img src="{{ site.github.url }}/assets/img/home.jpg" alt="Home" width="100%">
-  </div>
-  -->
-</div>
+</section>
 
 <!--{% include publications.html %}-->
 
-<div class="row g-5 mb-5">
-  <div class="col-md-12">
-    <h3 class="fw-bold border-bottom pb-3 mb-5">Updates</h3>
+<section class="content-section updates-section mb-5" aria-labelledby="updates-title">
+  <div class="section-heading">
+    <h2 id="updates-title">Updates</h2>
+  </div>
+  <div class="updates-list">
     {% assign posts_limit = site.updates_limit | default: 5 %}
     {% for post in site.posts limit: posts_limit %}
-      {% if post.link and post.link != "" %}
-        <p><a href="{{ post.link }}" target="_blank">{{ post.title }}</a> - {{ post.date | date: "%B %-d, %Y" }}</p>
-      {% else %}
-        <p>{{ post.title }} - {{ post.date | date: "%B %-d, %Y" }}</p>
-      {% endif %}
+      <article class="update-item">
+        <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%b %-d, %Y" }}</time>
+        <div class="update-title">
+          {% if post.link and post.link != "" %}
+            <a href="{{ post.link }}" target="_blank" rel="noopener noreferrer">{{ post.title }}</a>
+          {% else %}
+            <span>{{ post.title }}</span>
+          {% endif %}
+        </div>
+      </article>
     {% endfor %}
   </div>
-</div>
+</section>
