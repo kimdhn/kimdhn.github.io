@@ -20,7 +20,8 @@ layout: default
     <h1 class="fw-bold mb-3">{{ page.title }}</h1>
     
     {% if page.authors and page.authors != empty %}
-    <p class="text-muted mb-3" style="font-size: 15px;">{{ page.authors }}</p>
+    {% assign formatted_authors = page.authors | replace: 'Dohoon Kim', '<strong>Dohoon Kim</strong>' %}
+    <p class="text-muted mb-3" style="font-size: 15px;">{{ formatted_authors }}</p>
     {% endif %}
     
     <div class="mb-4">

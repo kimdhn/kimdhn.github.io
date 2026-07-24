@@ -30,7 +30,10 @@
                   <p class="publication-title mb-1">
                     {{ pub.title }}
                   </p>
-                  {% if pub.authors and pub.authors != empty %}<p class="publication-authors text-muted mb-1">{{ pub.authors }}</p>{% endif %}
+                  {% if pub.authors and pub.authors != empty %}
+                    {% assign formatted_authors = pub.authors | replace: 'Dohoon Kim', '<strong>Dohoon Kim</strong>' %}
+                    <p class="publication-authors text-muted mb-1">{{ formatted_authors }}</p>
+                  {% endif %}
                   <div class="publication-meta">
                     {% if pub.venue and pub.venue != empty %}<small class="text-muted">{{ pub.venue }}</small>{% endif %}
                     {% if pub.year %}<small class="text-muted">, {{ pub.year }}</small>{% endif %}
