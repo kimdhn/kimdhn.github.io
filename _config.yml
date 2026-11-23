@@ -1,7 +1,7 @@
 url: "" # the base hostname & protocol for your site, e.g. http://example.com
 baseurl: "" # the subpath of your site, e.g. /blog
-title: "Kim Dohoon" # the name of your site, e.g. ACME Corp.
-description: "Data Scientist"
+title: "Dohoon Kim"
+description: "M.S.–Ph.D. student at Seoul National University. Energy-based models, constrained generation, protein design."
 updates_limit: 5
 
 # Collections

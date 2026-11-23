@@ -1,27 +1,4 @@
-<header class="site-header d-flex flex-column flex-md-row align-items-md-center pb-3 mb-5">
-  <div class="site-brand">
-    <a href="{{ site.github.url }}/" class="site-title d-flex align-items-center text-decoration-none">
-      <span>{{ site.title }}</span>
-    </a>
-    <a href="{{ site.github.url }}/" class="site-description d-flex align-items-center text-decoration-none">
-      <span>{{ site.description }}</span>
-    </a>
-  </div>
-  <nav class="site-nav d-flex flex-wrap mt-3 mt-md-0 ms-md-auto" aria-label="Primary navigation">
-    <a class="text-decoration-none" href="{{ site.github.url }}/">home</a>
-    {% if site.data.settings.publications_enabled %}
-      <a class="text-decoration-none" href="{{ site.github.url }}/publications">publications</a>
-    {% endif %}
-    {% for item in site.data.settings.menu %}
-      {% if item.name != 'home' %}
-        <a class="text-decoration-none" href="{{ site.github.url }}{{ item.url }}">{{ item.name }}</a>
-      {% endif %}
-    {% endfor %}
-    {% if site.resume and site.resume.url %}
-      <a class="text-decoration-none nav-external-link" href="{{ site.resume.url }}" target="_blank" rel="noopener noreferrer" aria-label="CV (새 탭에서 열기)">
-        <span>CV</span>
-        <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i>
-      </a>
-    {% endif %}
-  </nav>
+<header class="site-header">
+  <a href="{{ site.github.url }}/" class="site-title">{{ site.data.settings.profile.name }}</a>
+  <a href="{{ site.github.url }}/" class="site-back">← Home</a>
 </header>

@@ -2,52 +2,55 @@
 layout: default
 ---
 
-{% assign home_profile_image = site.data.settings.home_profile_image | default: "" %}
+{% assign profile = site.data.settings.profile %}
+{% assign photo_path = "/" | append: profile.image %}
+{% assign photo = site.static_files | where: "path", photo_path | first %}
 
-<section class="content-section about-section profile-intro{% if home_profile_image == "" %} profile-intro-no-image{% endif %} mb-5" aria-labelledby="about-title">
-  <div class="row g-4 g-lg-5 align-items-start">
-    <div class="{% if home_profile_image == "" %}col-lg-12{% else %}col-lg-8{% endif %}">
-      <div class="section-heading">
-        <h2 id="about-title">About</h2>
-      </div>
-      <div class="section-body">
-        {{ content }}
-      </div>
-      <div class="research-keywords" aria-label="Research keywords">
-        <span>Machine Learning</span>
-        <span>Constraints</span>
-        <span>Energy-Based Models</span>
-      </div>
-    </div>
-    {% if home_profile_image != "" %}
-      <div class="col-lg-4">
-        <figure class="home-portrait mb-0">
-          <img src="{{ site.github.url }}/{{ home_profile_image }}" alt="Kim Dohoon">
-        </figure>
-      </div>
-    {% endif %}
+<section class="hero">
+  {% if photo %}
+    <img class="hero-photo" src="{{ site.github.url }}/{{ profile.image }}" alt="{{ profile.name }}">
+  {% endif %}
+  <div class="hero-text">
+    <h1>{{ profile.name }} <span class="name-ko">{{ profile.name_ko }}</span></h1>
+    <p class="hero-position">{{ profile.position }}</p>
+    <p class="hero-affiliation">{{ profile.affiliation }}</p>
+    <p class="hero-affiliation">{{ profile.lab }}</p>
+    <nav class="hero-links" aria-label="Links">
+      {% for item in site.data.settings.social %}
+        <a href="{{ item.link }}" {% unless item.link contains 'mailto:' %}target="_blank" rel="noopener"{% endunless %} title="{{ item.name }}" aria-label="{{ item.name }}">
+          {% if item.svg %}<img src="{{ site.github.url }}/assets/img/{{ item.svg }}" alt="">{% else %}<i class="{{ item.icon }}" aria-hidden="true"></i>{% endif %}
+        </a>
+      {% endfor %}
+      {% if site.resume.url %}
+        <a class="hero-cv" href="{{ site.resume.url }}" target="_blank" rel="noopener">CV</a>
+      {% endif %}
+    </nav>
   </div>
 </section>
 
-<!--{% include publications.html %}-->
-
-<section class="content-section updates-section mb-5" aria-labelledby="updates-title">
-  <div class="section-heading">
-    <h2 id="updates-title">Updates</h2>
+<section class="section" id="about">
+  <h2>About</h2>
+  <div class="prose">{{ content }}</div>
+  <div class="keywords">
+    <span>Energy-Based Models</span>
+    <span>Constraint Injection</span>
   </div>
-  <div class="updates-list">
-    {% assign posts_limit = site.updates_limit | default: 5 %}
-    {% for post in site.posts limit: posts_limit %}
-      <article class="update-item">
-        <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%b %-d, %Y" }}</time>
-        <div class="update-title">
-          {% if post.link and post.link != "" %}
-            <a href="{{ post.link }}" target="_blank" rel="noopener noreferrer">{{ post.title }}</a>
-          {% else %}
-            <span>{{ post.title }}</span>
-          {% endif %}
-        </div>
-      </article>
+</section>
+
+<section class="section" id="news">
+  <h2>News</h2>
+  <ul class="news">
+    {% for post in site.posts limit: site.updates_limit %}
+      <li>
+        <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%b %Y" }}</time>
+        {% if post.link and post.link != "" %}
+          <a href="{{ post.link }}" target="_blank" rel="noopener">{{ post.title }}</a>
+        {% else %}
+          <span>{{ post.title }}</span>
+        {% endif %}
+      </li>
     {% endfor %}
-  </div>
+  </ul>
 </section>
+
+{% include publications.html %}

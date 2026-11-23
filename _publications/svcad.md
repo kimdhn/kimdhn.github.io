@@ -8,10 +8,9 @@ thumbnail: "svcad.png"
 pdf: 
 poster:
 github: ""
-page: "https://kcc2026.kiise.or.kr/Proceedings/SessionPaperList.asp?code=P2.5"
+page: "https://www.dbpia.co.kr/journal/articleDetail?nodeId=NODE12929500"
 authors: "Dohoon Kim*, Hosik Hwang*, Minjeong Kim, Sungyong Baik†"
 description: "Anomaly Detection via MLLMs (Undergraduate Thesis)"
 layout: publication
 ---
 
-## Publication Details

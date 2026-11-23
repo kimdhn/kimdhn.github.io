@@ -1,4 +1,0 @@
----
-layout: link
-title: "Link"
----

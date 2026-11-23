@@ -1,19 +1,14 @@
-menu:
-- {name: 'home', url: '/'}
-- {name: 'contact', url: '/contact'}
-- {name: 'link', url: '/link'}
-
-publications_enabled: true
-
-# Set this to an image path, such as "assets/img/home.jpg", to show a profile image on the home page.
-home_profile_image: ""
+profile:
+  name: "Dohoon Kim"
+  name_ko: "김도훈"
+  image: "assets/img/profile.jpg"
+  position: "M.S.–Ph.D. Student"
+  affiliation: '<a href="https://gsds.snu.ac.kr/">Graduate School of Data Science</a>, Seoul National University'
+  lab: '<a href="https://www.skiml.snu.ac.kr/">SKIML Lab</a> · Advised by <a href="https://leejayyoon.github.io/index.html">Prof. Jay-Yoon Lee</a>'
 
 social:
-- {icon: 'github', name: 'GitHub', username: '@kimdhn', link: 'https://github.com/kimdhn'}
-- {icon: 'x-twitter', name: 'X (Twitter)', username: '@kim_dhnn', link: 'https://x.com/kim_dhnn'}
-#- {icon: 'instagram', name: 'Instagram', username: '@paululele', link: 'https://instagram.com/paululele'}
-- {icon: 'linkedin', name: 'LinkedIn', username: 'Dohoon Kim', link: 'https://www.linkedin.com/in/kimdohoon/'}
-- {svg: 'tistory-icon.svg', name: 'Blog (Tistory)', username: 'kimdhn', link: 'https://kimdhn.tistory.com/'}
-
-contacts:
-- {name: 'Dohoon Kim', title: 'M.S. & Ph.D. Course', department: 'Graduate School of Data Science', institution: 'Seoul National University', institution_address: '1 Gwanak-ro, Gwanak-gu, Seoul', phone: '(000) 000-0000', email: 'dohoon@snu.ac.kr', office: 'Science Building 505', image: 'assets/img/contact.jpg'}
+- {icon: 'fa-solid fa-envelope', name: 'Email', link: 'mailto:dohoon@snu.ac.kr'}
+- {icon: 'fa-brands fa-github', name: 'GitHub', link: 'https://github.com/kimdhn'}
+- {icon: 'fa-brands fa-x-twitter', name: 'X', link: 'https://x.com/kim_dhnn'}
+- {icon: 'fa-brands fa-linkedin', name: 'LinkedIn', link: 'https://www.linkedin.com/in/kimdohoon/'}
+- {svg: 'tistory-icon.svg', name: 'Blog', link: 'https://kimdhn.tistory.com/'}
